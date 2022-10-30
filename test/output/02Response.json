@@ -1,0 +1,9 @@
+{
+	"message": [
+		"\"email\" es requerido",
+		"\"card_number\" es requerido",
+		"\"cvv\" es requerido",
+		"\"expiration_year\" es requerido",
+		"\"expiration_month\" es requerido"
+	]
+}

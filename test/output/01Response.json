@@ -1,0 +1,5 @@
+{
+    "message": [
+        "\"authorizationToken\" con valor \"1234567890\" no coincide para el patrón: /^Bearer\\spk_test_[A-Za-z]{16}$/"
+    ]
+}

@@ -1,0 +1,12 @@
+{
+    "body": {
+        "email": "junior.rodriguez.mejia@gmail.com",
+        "card_number": "4111111111111191",
+        "cvv": "123",
+        "expiration_year": "2028",
+        "expiration_month": "12"
+    },
+    "headers": {
+        "Authorization": "Bearer pk_test_LsRBKejzCOEEWOsw"
+    }
+}

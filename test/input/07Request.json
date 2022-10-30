@@ -1,0 +1,9 @@
+{
+    "body": {},
+    "pathParameters": {
+        "token": "dkRKoTn4cES8nY87"
+    },
+    "headers": {
+        "Authorization": "Bearer pk_test_LsRBKejzCOEEWOsw"
+    }
+}

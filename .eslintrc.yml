@@ -1,0 +1,48 @@
+extends:
+  - airbnb-base
+  - plugin:jest/recommended
+plugins:
+  - import
+  - jest
+rules:
+  indent: ["error", "tab"] 
+  no-tabs: 0
+  eqeqeq: ["error", "always"] 
+  no-await-in-loop: 0 
+  no-restricted-syntax: 0 
+  no-plusplus: 0 
+  no-use-before-define: ["error", { "functions": false }] 
+  no-underscore-dangle: 0
+  linebreak-style: ["error", "windows"]
+  comma-dangle: ["error", {"functions": "never"}]
+  curly: [2, "all"]
+  arrow-parens: ["error", "always"]
+  arrow-body-style: ["error", "as-needed", { "requireReturnForObjectLiteral": true }]
+  max-statements-per-line: ["error", { "max": 1 }]
+  max-len: ["error", { "code": 150}]
+  object-shorthand: ["error", "always", { "avoidExplicitReturnArrows": true, "ignoreConstructors": true }]
+  radix: "error"
+  no-mixed-spaces-and-tabs: ["error", "smart-tabs"]
+  no-param-reassign: ["error", { "props": false }]
+  no-unused-vars: "error"
+  no-warning-comments: ["error", { "terms": ["todo", "fixme", "any other term"], "location": "anywhere" }]
+  no-return-await: "error"
+  max-lines-per-function: ["error", 200]
+  max-params: ["error", 7]
+  block-scoped-var: "error"
+  "jest/no-disabled-tests": "warn"
+  "jest/no-focused-tests": "error"
+  "jest/no-identical-title": "error"
+  "jest/prefer-to-have-length": "warn"
+  "jest/valid-expect": "error"
+  "no-console": "error"
+  "import/no-unresolved": "off"
+  "import/no-absolute-path": "off"
+  "import/no-extraneous-dependencies": "off"
+  max-depth: ["error", 3]
+
+globals:
+  __: true
+
+env:
+  "jest/globals": true

@@ -1,0 +1,107 @@
+# Welcome to Serverless!
+#
+# This file is the main config file for your service.
+# It's very minimal at this point and uses default values.
+# You can always add more config options for more control.
+# We've included some commented out config examples here.
+# Just uncomment any of them to get that config option.
+#
+# For full config options, check the docs:
+#    docs.serverless.com
+#
+# Happy Coding!
+
+service: culqi-api
+plugins:
+  - serverless-offline
+# app and org for use with dashboard.serverless.com
+#app: your-app-name
+#org: your-org-name
+
+# You can pin your service to only deploy with a specific Serverless version
+# Check out our docs for more details
+frameworkVersion: '3'
+
+provider:
+  name: aws
+  runtime: nodejs14.x
+
+# you can overwrite defaults here
+#  stage: dev
+  region: ${self:provider.environment.REGION}
+
+# you can add statements to the Lambda function's IAM Role here
+  iam:
+    role:
+      statements:
+        - Effect: "Allow"
+          Action:
+            - "dynamodb:Query"
+            - "dynamodb:Scan"
+            - "dynamodb:GetItem"
+            - "dynamodb:PutItem"
+            - "dynamodb:UpdateItem"
+            - "dynamodb:DeleteItem"
+          Resource: "arn:aws:dynamodb:${self:provider.environment.REGION}:*:table/${self:provider.environment.DYNAMODB_TABLE_CARD}"
+
+# you can define service wide environment variables here
+  environment:
+    DYNAMODB_TABLE_CARD: Card
+    REGION: 'us-east-1'
+
+# you can add packaging information here
+package:
+  individually: true
+  exclude:
+    - coverage/**
+
+functions:
+  # authorizer:
+  #   handler: src/functions/handler.authorizer
+
+  generateToken:
+    handler: src/functions/handler.generateToken
+    events:
+      - http:
+          method: post
+          path: tokens
+          # authorizer: authorizer
+          request:
+            template:
+              application/json: ${file(request.template)}
+          cors: true
+
+  getCard:
+    handler: src/functions/handler.getCard
+    events:
+      - http:
+          method: get
+          path: card/{token}
+          # authorizer: authorizer
+          request:
+            parameters:
+              paths:
+                token: true
+            template:
+              application/json: ${file(request.template)}
+          cors: true
+
+# you can add CloudFormation resource templates here
+resources:
+  Resources:
+    Card:
+      Type: "AWS::DynamoDB::Table"
+      Properties:
+        TableName: ${self:provider.environment.DYNAMODB_TABLE_CARD}
+        AttributeDefinitions:
+          - AttributeName: "card_id"
+            AttributeType: "S"
+        KeySchema:
+          - AttributeName: "card_id"
+            KeyType: "HASH"
+        TimeToLiveSpecification:
+          AttributeName: ttl
+          Enabled: true
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1

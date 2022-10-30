@@ -1,0 +1,36 @@
+{
+  "name": "culqi_api",
+  "version": "1.0.0",
+  "description": "",
+  "main": "handler.js",
+  "scripts": {
+    "start": "sls offline start --aws-profile culqiProfile",
+    "test": "jest --coverage",
+    "sls-deploy": "sls deploy --aws-profile culqiProfile",
+    "lint": "eslint . --ext .js,.ts,.tsx -f codeframe",
+    "lint:fix": "eslint . --ext .js,.ts,.tsx -f codeframe --fix"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "eslintConfig": {
+    "extends": "@serverless/eslint-config/node",
+    "root": true
+  },
+  "dependencies": {
+    "aws-sdk": "^2.1241.0",
+    "joi": "^17.6.4",
+    "randomstring": "^1.2.3",
+    "uuid": "^9.0.0"
+  },
+  "devDependencies": {
+    "eslint": "7.32.0",
+    "eslint-config-airbnb-base": "14.2.0",
+    "eslint-plugin-import": "2.26.0",
+    "eslint-plugin-jest": "26.6.0",
+    "git-list-updated": "^1.2.1",
+    "jest": "24.9.0",
+    "prettier": "^2.7.1",
+    "serverless-offline": "^11.2.1"
+  }
+}

@@ -1,0 +1,6 @@
+{
+	"message": [
+		"\"card_number\" es una tarjeta inválida",
+		"\"expiration_year\" es una año de tarjeta inválido. Debe ser mayor o igual que 2022 y menor o igual que 2027"
+	]
+}
